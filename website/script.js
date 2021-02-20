@@ -3,6 +3,8 @@ var wordList = ["Kind", "Amusing", "Loyal", "Thoughtful", "Creative", "Compassio
 
 
 var currList = [];
+var centerWord;
+
 function randomizeWords() {
     currList = [];
     while (currList.length < 9) {
@@ -10,13 +12,14 @@ function randomizeWords() {
         // returns a random integer from list of wordList
         var currWord = wordList[currIndex];
         //console.log(wordList[currIndex]);
-        if (!(currList.includes(currWord))) {
-            currList.push(currWord);
-        }
+            if (!(currList.includes(currWord))) {
+                currList.push(currWord);
+            }
     }
     console.log(currList);
     for(i=0; i<9; i++){
         assignWordToGrid(i);
+        
     }   
 }
 
@@ -33,4 +36,31 @@ function saveCenterWord(){
     document.getElementById("savedWords").innerHTML = savedWords.join(" • ");
     console.log(savedWords);
 }
+
+function clicked(i){
+    //console.log("Clicked!");
+    //console.log(currList);
+    var clickWord = currList[i];
+    //console.log(clickWord);
+
+    currList = []
+    while (currList.length < 9) {
+        var currIndex = Math.floor(Math.random() * wordList.length);
+        var currWord = wordList[currIndex];
+            if(currList.length == 4){
+                currList.push(clickWord);
+            }
+            if (!(currList.includes(currWord) || currWord == clickWord)) {
+                currList.push(currWord);
+            }
+    }
+    console.log(currList);
+    
+    for(i=0; i<9; i++){
+        assignWordToGrid(i);
+    }     
+
+    return currList;
+}
+
 
