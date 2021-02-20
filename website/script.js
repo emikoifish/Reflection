@@ -16,15 +16,21 @@ function randomizeWords() {
     }
     console.log(currList);
     for(i=0; i<9; i++){
-        assignWordToGrid(i)
-    }
-    
+        assignWordToGrid(i);
+    }   
 }
-
 
 function assignWordToGrid(i){
     document.getElementById(i.toString()).innerHTML = currList[i];
     return currList[i];
 }
 
+var savedWords = [];
+function saveCenterWord(){
+    if (!(savedWords.includes(currList[4]))) {
+        savedWords.push(currList[4]);
+    }
+    document.getElementById("savedWords").innerHTML = savedWords.join(" • ");
+    console.log(savedWords);
+}
 

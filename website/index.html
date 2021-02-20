@@ -39,7 +39,7 @@
 </style>
 
 
-<body>
+<body onload="randomizeWords()">
 
     <!--
 website hosting information: https://ucsdservicedesk.service-now.com/its?id=kb_article_view&sysparm_article=KB0030548&sys_kb_id=4f93c6aedb4b0c504cd8f06e0f9619b1
@@ -88,7 +88,7 @@ website hosting information: https://ucsdservicedesk.service-now.com/its?id=kb_a
         <div class="w3-content w3-center text-myDarkBlue">
 
             <h2 onclick="randomizeWords()">Randomize Words</h2>
-            <h2>Save Center Word</h2>
+            <h2 onclick="saveCenterWord()">Save Center Word</h2>
 
         </div>
     </div>
@@ -97,8 +97,11 @@ website hosting information: https://ucsdservicedesk.service-now.com/its?id=kb_a
         <div class="w3-content w3-center text-myDarkBlue">
 
             <h2>Saved Words</h2>
+            <h5 id="savedWords"> </h5>
+<!--
             <h5>Amicable</h5>
             <h5>Hardworking</h5>
+-->
 
         </div>
     </div>
