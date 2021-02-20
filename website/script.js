@@ -43,8 +43,7 @@ function saveCenterWord() {
         var node = document.createTextNode(savedWords[i - 1]);
         wordBox.appendChild(node);
         wordBox.setAttribute("id", "savedWord" + (i - 1).toString() );
-        wordBox.setAttribute("onclick", "deleteWord("+(i - 1).toString()+")");
-//        wordBox.setAttribute("class", "tooltip");
+        wordBox.setAttribute("class", "tooltip");
         
         var element = document.getElementById("savedWords");
         element.appendChild(wordBox);
