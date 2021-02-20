@@ -44,7 +44,14 @@ function saveCenterWord() {
         wordBox.appendChild(node);
         wordBox.setAttribute("id", "savedWord" + (i - 1).toString() );
         wordBox.setAttribute("onclick", "deleteWord("+(i - 1).toString()+")");
-//        wordBox.setAttribute("class", "tooltip");
+        wordBox.setAttribute("class", "tooltip");
+        
+//        <h5 onclick="deleteWord", class="tooltip", id="savedWord"> Loyal <span class="tooltiptext"> click to delete </span> </h5>
+        var toolTipText = document.createElement("span");
+        var tttext = document.createTextNode("click to delete");
+        toolTipText.setAttribute("class", "tooltiptext");
+        toolTipText.appendChild(tttext);
+        wordBox.appendChild(toolTipText);
         
         var element = document.getElementById("savedWords");
         element.appendChild(wordBox);
