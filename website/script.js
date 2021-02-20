@@ -1,7 +1,7 @@
 var wordList = ["Kind", "Amusing", "Loyal", "Thoughtful", "Creative", "Compassionate", "Gentle", "Helpful", "Funny"];
 // Needs to be a list from API**
 
-
+// delete this comment
 var currList = [];
 var centerWord;
 
