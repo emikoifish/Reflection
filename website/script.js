@@ -34,7 +34,7 @@ function saveCenterWord(){
         savedWords.push(currList[4]);
     }
     document.getElementById("savedWords").innerHTML = savedWords.join(" • ");
-    console.log(savedWords);
+    //console.log(savedWords);
 }
 
 function clicked(i){
