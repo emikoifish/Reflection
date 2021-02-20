@@ -30,7 +30,9 @@
 
 .text-myDarkBlue,.hover-text-myDarkBlue:hover{color:#004AAD!important}
 
-/*
-th, td {
-  padding: 15px;
-}*/
+
+table {
+  table-layout: fixed;
+  width: 200px;
+}
+
