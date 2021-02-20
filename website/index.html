@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Emily Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<link rel="stylesheet" type="text/css" href="style/mystyle.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Lato", sans-serif
+    }
+
+    .w3-bar,
+    h1,
+    button {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .fa-anchor,
+    .fa-coffee {
+        font-size: 200px
+    }
+
+    body {
+        background-image: url("image/background.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+
+<body>
+
+    <!--
+website hosting information: https://ucsdservicedesk.service-now.com/its?id=kb_article_view&sysparm_article=KB0030548&sys_kb_id=4f93c6aedb4b0c504cd8f06e0f9619b1
+-->
+
+    <!-- Header -->
+    <header class="w3-container w3-center ">
+
+        <h1 class="w3-margin w3-jumbo"><img class="scale70" src="image/logo.jpeg" alt="Thinking About UUU"></h1>
+        <!--  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>-->
+    </header>
+
+    <!-- First Grid -->
+    <div class="w3-row-padding   w3-padding-64 w3-container">
+        <div class="w3-content">
+
+            <h1 class="text-myDarkBlue w3-center">I am:</h1>
+
+            <h5 class="w3-padding-32 text-myDarkBlue w3-center">
+
+                <table style="width:100%; padding:px">
+                    <tr style="padding:2px">
+                        <td>Kind</td>
+                        <td>Thoughtful</td>
+                        <td>Gentle</td>
+                    </tr>
+                    <tr>
+                        <td>Amusing</td>
+                        <td class="myDarkBlue w3-text-white">Creative</td>
+                        <td>Helpful</td>
+                    </tr>
+                    <tr>
+                        <td>Loyal</td>
+                        <td>Compassionate</td>
+                        <td>Funny</td>
+                    </tr>
+                </table>
+
+            </h5>
+
+        </div>
+    </div>
+    <!-- Second Grid -->
+    <div class="w3-row-padding   w3-padding-32 w3-container ">
+        <div class="w3-content w3-center text-myDarkBlue">
+
+            <h2>Randomize Words</h2>
+            <h2>Save Center Word</h2>
+
+        </div>
+    </div>
+    <!-- Third Grid -->
+    <div class="w3-row-padding   w3-padding-64 w3-container w3-white ">
+        <div class="w3-content w3-center text-myDarkBlue">
+
+            <h2>Saved Words</h2>
+            <h5>Amicable</h5>
+            <h5>Hardworking</h5>
+
+        </div>
+    </div>
+    <!--
+<div class="w3-row-padding  myLightBlue w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1 class="w3-text-white">About Me</h1>
+      <h5 class="w3-padding-32 w3-text-white">Hello! I am a PhD student in the Bioinformatics and Systems Biology Program at the University of California, San Diego. </h5>
+
+      <p class="w3-text-white">I graduated from University of California, Santa Cruz with a BS in Bioinformatics. My research interests include graphs (like genome graphs), algorithms, and genomic variation. I am involved in the Graduate Bioinformatics Council (GBIC) as the Director of Community Events. In my free time I enjoy solving puzzles from jigsaw puzzles to nonograms.</p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <img class="scale30 w3-padding-64 circleImage" src="image/headshot.jpeg" alt="Emily Kobayashi">
+    </div>
+  </div>
+</div>
+-->
+
+
+    <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+        <!--    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>-->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity">
+        <div class="w3-xlarge w3-padding-32">
+            <!--    
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+-->
+            <!--
+            <a href="https://github.com/emikoifish"><i class="fa fa-github w3-hover-opacity"></i></a>
+            <a href="https://www.linkedin.com/in/emilykobayashi/"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+-->
+             <a href="aboutus.html">About Us</a>
+
+        </div>
+        <!-- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>-->
+    </footer>
+
+    <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function myFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+
+</body></html>

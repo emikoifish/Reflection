@@ -1,0 +1,36 @@
+.scale70 {
+    width: 70vw;
+}
+
+.scale30 {
+    width: 30vw;
+}
+
+.scale20 {
+    width: 20vw;
+}
+.scale15 {
+    width: 15vw;
+}
+
+.myPink {
+   background-color:#d43289
+}
+
+.myLightBlue {
+   background-color:#C7F0FF
+}
+.myDarkBlue {
+   background-color:#004AAD
+}
+
+.circleImage {
+  border-radius: 50%;
+}
+
+.text-myDarkBlue,.hover-text-myDarkBlue:hover{color:#004AAD!important}
+
+/*
+th, td {
+  padding: 15px;
+}*/
