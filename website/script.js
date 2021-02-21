@@ -1,4 +1,4 @@
-var wordList = ["Kind", "Amusing", "Loyal", "Thoughtful", "Creative", "Compassionate", "Gentle", "Helpful", "Funny"];
+var wordList = ["Kind", "Amusing", "Loyal", "Thoughtful", "Creative", "Compassionate", "Gentle", "Helpful", "Funny", "Intelligent", "Smart", "Honest", "Careful", "Crafty", "Animated", "Lively", "Naive", "Generous", "Curious"];
 // Needs to be a list from API**
 
 // delete this comment
@@ -11,7 +11,7 @@ function randomizeWords() {
         // returns a random integer from list of wordList
         var currWord = wordList[currIndex];
         //console.log(wordList[currIndex]);
-        if (!(currList.includes(currWord))) {
+        if (!(currList.includes(currWord) || savedWords.includes(currWord))) {
             currList.push(currWord);
         }
     }
@@ -79,7 +79,7 @@ function clicked(i) {
         if (currList.length == 4) {
             currList.push(clickWord);
         }
-        if (!(currList.includes(currWord) || currWord == clickWord)) {
+        if (!(currList.includes(currWord) || currWord == clickWord  || savedWords.includes(currWord))) {
             currList.push(currWord);
         }
     }
