@@ -32,13 +32,6 @@ function randomizeWords() {
     console.log(currList);
     for (var i = 0; i < 9; i++) {
         assignWordToGrid(i);
-<<<<<<< HEAD
-
-    }
-}
-
-function assignWordToGrid(i) {
-=======
         
     }  
     notStartingSet(); 
@@ -72,7 +65,6 @@ function notStartingSet(){
 function assignWordToGrid(i){   // change to list parameter
     // for loop goes here
     // assign using the list from notStartingList
->>>>>>> sub
     document.getElementById(i.toString()).innerHTML = currList[i];
     return currList[i];
 }
@@ -134,15 +126,10 @@ function clicked(i) {
         }
     }
     console.log(currList);
-<<<<<<< HEAD
-
-    for (i = 0; i < 9; i++) {
-=======
     
     // Generated list goes here?
 
     for(i=0; i<9; i++){
->>>>>>> sub
         assignWordToGrid(i);
     }
 
