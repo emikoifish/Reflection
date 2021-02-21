@@ -107,6 +107,18 @@ function saveCenterWord() {
 
         var element = document.getElementById("savedWords");
         element.appendChild(wordBox);
+        
+        
+        var prompts = ["How have I have been "+savedWords[i - 1]+"?",
+        "What can I do in the future to be more "+savedWords[i - 1]+"?",
+        "What actions did I do today to be "+savedWords[i - 1]+"?",
+        "Will being "+savedWords[i - 1]+" propel me to achieve my goals in life?",
+        "Is this how my friends and family would describe me? If not, what can I do?",
+        "How has being "+savedWords[i - 1]+" affected my community (in a positive and negative manner)?"
+        ]
+        var j = Math.floor(Math.random() * prompts.length);
+
+        document.getElementById("prompt").innerHTML = prompts[j];
     }
 
     //    document.getElementById("savedWords").innerHTML = savedWords.join(" • ");
