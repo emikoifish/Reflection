@@ -1,4 +1,4 @@
-var wordList = ["kind", "amusing", "loyal", "thoughtful", "creative", "compassionate", "gentle", "helpful", "funny", "intelligent", "smart", "honest", "careful", "crafty", "animated", "lively", "naive", "generous", "curious"];
+var wordList = ["kind", "amusing", "loyal", "thoughtful", "creative", "compassionate", "gentle", "helpful", "funny", "intelligent", "smart", "honest", "careful", "crafty", "animated", "lively", "naive", "generous", "curious", "strategic", "upbeat", "trustworthy", "brave", "caring", "daring", "humorous", "independent", "polite", "optimistic", "reliable", "responsible", "studious", "understanding", "professional", "collaborative", "bubbly"];
 // Needs to be a list from API**
 
 // Information to reach API
@@ -114,7 +114,8 @@ function saveCenterWord() {
         "What actions did I do today to be "+savedWords[i - 1]+"?",
         "Will being "+savedWords[i - 1]+" propel me to achieve my goals in life?",
         "Is this how my friends and family would describe me? If not, what can I do?",
-        "How has being "+savedWords[i - 1]+" affected my community (in a positive and negative manner)?"
+        "How has being "+savedWords[i - 1]+" affected my community (in a positive and negative manner)?",
+        "What does being "+savedWords[i - 1]+" mean to you?"
         ]
         var j = Math.floor(Math.random() * prompts.length);
 
