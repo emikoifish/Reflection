@@ -1,4 +1,4 @@
-var wordList = ["Kind", "Amusing", "Loyal", "Thoughtful", "Creative", "Compassionate", "Gentle", "Helpful", "Funny", "Intelligent", "Smart", "Honest", "Careful", "Crafty", "Animated", "Lively", "Naive", "Generous", "Curious"];
+var wordList = ["kind", "amusing", "loyal", "thoughtful", "creative", "compassionate", "gentle", "helpful", "funny", "intelligent", "smart", "honest", "careful", "crafty", "animated", "lively", "naive", "generous", "curious"];
 // Needs to be a list from API**
 
 // Information to reach API
@@ -35,15 +35,17 @@ function randomizeWords() {
 
     }
     console.log(currList);
-//    notStartingSet(0);
+    //    notStartingSet(0);
 }
 
-function notStartingSet(j, next) {
+var returnList = [];
+
+function notStartingSet(j) {
     console.log("j", j)
     var mid = currList[j];
     console.log(mid);
     console.log(currList)
-    var returnList = [];
+    returnList = [];
     $.getJSON(
         url + queryParams + mid,
         function (data, status) {
@@ -52,6 +54,7 @@ function notStartingSet(j, next) {
                 if (i != 4) {
                     $.each(data[i], function (key, val) {
                         returnList[i] = val
+                        console.log(returnList)
                         console.log(key + "\t" + val + "\n");
                         return false
                     });
@@ -62,10 +65,11 @@ function notStartingSet(j, next) {
             }
         }
     );
-    console.log(returnList);
+    console.log("Hello", returnList)
+    synomynsWords = returnList;
     return returnList;
-//    currList = returnList;
-//    console.log(currList);
+    //    currList = returnList;
+    //    console.log(currList);
 }
 
 function assignWordToGrid(i) { // change to list parameter
@@ -114,67 +118,123 @@ function deleteWord(i) {
     document.getElementById("savedWord" + (i).toString()).remove();
 }
 
-function clicked(i) {
-    //console.log("Clicked!");
-    //console.log(currList);
-    var clickWord = currList[i];
-    //console.log(clickWord);
-    
-    var synomyns = notStartingSet(i);
-    console.log("synomyns", JSON.stringify(synomyns))
-    
-    
-
-    currList = []
-
-    console.log("synomyns.length", synomyns.length, Object.keys(synomyns))
-    
-    var numSynomyns = Math.min(synomyns.length, 6)
-    console.log(numSynomyns, "help", synomyns.length)
-
-    while (currList.length < 9) {
-        if (currList.length == 4) {
-            currList.push(clickWord);
-        } else {
-            var currIndex = 0;
-            var currWord = "";
-            if (currList.length < numSynomyns) {
-                console.log("currList.length")
-                currIndex = Math.floor(Math.random() * synomyns.length);
-                currWord = synomyns[currIndex];
-                
-            }
-            else{
-                currIndex = Math.floor(Math.random() * wordList.length);
-                currWord = wordList[currIndex];
-            }
-
-            if (!(currList.includes(currWord) || currWord == clickWord || savedWords.includes(currWord))) {
-                currList.push(currWord);
-            }
-        }
-    }
-    console.log(currList);
-
-    // Generated list goes here?
-
-    for (i = 0; i < 9; i++) {
-        assignWordToGrid(i);
-    }
-
-    return currList;
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+        currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
 }
 
-//var request = new XMLHttpRequest()
+function clicked(j) {
+    var clickWord = currList[j];
+
+    console.log("j", j)
+    var mid = currList[j];
+    console.log(mid);
+    console.log(currList)
+    returnList = [];
+    $.getJSON(
+        url + queryParams + mid,
+        function (data, status) {
+            console.log("data: " + data[0], "\nStatus: " + status + "\nCenter: " + mid)
+            for (i = 0; i < 9; i++) {
+                if (i != 4) {
+                    $.each(data[i], function (key, val) {
+                        returnList[i] = val
+                        console.log(returnList)
+                        console.log(key + "\t" + val + "\n");
+                        return false
+                    });
+                } else {
+                    returnList[4] = mid;
+                }
+
+            }
+            console.log("Hello", returnList)
+            synomynsWords = returnList;
+
+            //    return returnList;
+            //    currList = returnList;
+            //    console.log(currList);
+
+            //console.log("Clicked!");
+            //console.log(currList);
+
+            //console.log(clickWord);
+
+
+            //    var help = notStartingSet(i) ;
+            sleep(1000);
+            //    await notStartingSet(i);
+            var synomyns = returnList;
+            console.log("synomyns", JSON.stringify(synomyns), synomyns)
+
+            currList = []
+
+            console.log("synomyns.length", synomyns.length, Object.keys(synomyns))
+
+            var numSynomyns = Math.min(synomyns.length, 6)
+            console.log(numSynomyns, "help", synomyns.length)
+
+            while (currList.length < 9) {
+                if (currList.length == 4) {
+                    currList.push(clickWord);
+                } else {
+                    var currIndex = 0;
+                    var currWord = "";
+                    if (currList.length < numSynomyns) {
+                        console.log("currList.length")
+                        currIndex = Math.floor(Math.random() * synomyns.length);
+                        currWord = synomyns[currIndex];
+
+                    } else {
+                        currIndex = Math.floor(Math.random() * wordList.length);
+                        currWord = wordList[currIndex];
+                    }
+
+                    if (!(currList.includes(currWord) || currWord == clickWord || savedWords.includes(currWord))) {
+                        currList.push(currWord);
+                    }
+                }
+            }
+            console.log(currList);
+
+            // Generated list goes here?
+
+            for (i = 0; i < 9; i++) {
+                assignWordToGrid(i);
+            }
+
+            return currList;
+        }
+    );
+
+}
+
+//function getSynWords(i){
+//    mid = currList[i]
+//    var request = new XMLHttpRequest()
 //
 //// Open a new connection, using the GET request on the URL endpoint
-//request.open('GET', 'https://api.datamuse.com/words?rel_syn=sympathetic', true)
+//request.open('GET', 'https://api.datamuse.com/words?rel_syn='+mid, true)
 //
+//var synWords = []
 //request.onload = function () {
 //    // Begin accessing JSON data here
 //    var data = JSON.parse(this.response)
-//    console.log(data)
+//    console.log("hello", data)
+//    console.log(data.length)
+//    for (var i=0; i < data.length; i++){
+//        console.log(data[[i]].word)
+//        synWords.push(data[[i]].word)
+//    }
+//    
+//    console.log(synWords)
+//    
 //}
 //
 //// Send request
-//request.send()
+//request.send();
+//return synWords
+//}
