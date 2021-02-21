@@ -7,12 +7,12 @@ const queryParams = 'rel_syn=';
 
 
 // Selecting page elements
-const inputField = document.querySelector('#input');
-const submit = document.querySelector('#submit');
-const responseField = document.querySelector('#responseField');
-
-const wordQuery = inputField.value;
-const endpoint = url + queryParams + wordQuery;
+//const inputField = document.querySelector('#input');
+//const submit = document.querySelector('#submit');
+//const responseField = document.querySelector('#responseField');
+//
+//const wordQuery = inputField.value;
+//const endpoint = url + queryParams + wordQuery;
 
 
 // delete this comment
@@ -32,37 +32,43 @@ function randomizeWords() {
     console.log(currList);
     for (var i = 0; i < 9; i++) {
         assignWordToGrid(i);
-        
-    }  
-    notStartingSet(); 
+
+    }
+    console.log(currList);
+//    notStartingSet(0);
 }
 
-function notStartingSet(){
-    var mid = currList[4]
-    var returnList = []
+function notStartingSet(j, next) {
+    console.log("j", j)
+    var mid = currList[j];
+    console.log(mid);
+    console.log(currList)
+    var returnList = [];
     $.getJSON(
-        url+queryParams+currList[4], function(data, status){
-            console.log("data: "+ data[0], "\nStatus: "+ status+ "\nCenter: " + currList[4])
-            for(i=0;i<9;i++){
-                if(i!=4){
-                    $.each(data[i], function(key, val){
+        url + queryParams + mid,
+        function (data, status) {
+            console.log("data: " + data[0], "\nStatus: " + status + "\nCenter: " + mid)
+            for (i = 0; i < 9; i++) {
+                if (i != 4) {
+                    $.each(data[i], function (key, val) {
                         returnList[i] = val
                         console.log(key + "\t" + val + "\n");
                         return false
                     });
-                }
-                else{
+                } else {
                     returnList[4] = mid;
                 }
-                
+
             }
         }
-      );
-    currList = returnList;
-    console.log(currList);
+    );
+    console.log(returnList);
+    return returnList;
+//    currList = returnList;
+//    console.log(currList);
 }
 
-function assignWordToGrid(i){   // change to list parameter
+function assignWordToGrid(i) { // change to list parameter
     // for loop goes here
     // assign using the list from notStartingList
     document.getElementById(i.toString()).innerHTML = currList[i];
@@ -84,17 +90,17 @@ function saveCenterWord() {
         var wordBox = document.createElement("h5");
         var node = document.createTextNode(savedWords[i - 1]);
         wordBox.appendChild(node);
-        wordBox.setAttribute("id", "savedWord" + (i - 1).toString() );
-        wordBox.setAttribute("onclick", "deleteWord("+(i - 1).toString()+")");
+        wordBox.setAttribute("id", "savedWord" + (i - 1).toString());
+        wordBox.setAttribute("onclick", "deleteWord(" + (i - 1).toString() + ")");
         wordBox.setAttribute("class", "tooltip");
-        
-//        <h5 onclick="deleteWord", class="tooltip", id="savedWord"> Loyal <span class="tooltiptext"> click to delete </span> </h5>
+
+        //        <h5 onclick="deleteWord", class="tooltip", id="savedWord"> Loyal <span class="tooltiptext"> click to delete </span> </h5>
         var toolTipText = document.createElement("span");
         var tttext = document.createTextNode("click to delete");
         toolTipText.setAttribute("class", "tooltiptext");
         toolTipText.appendChild(tttext);
         wordBox.appendChild(toolTipText);
-        
+
         var element = document.getElementById("savedWords");
         element.appendChild(wordBox);
     }
@@ -105,7 +111,7 @@ function saveCenterWord() {
 
 function deleteWord(i) {
     savedWords.splice(i, 1);
-    document.getElementById( "savedWord" + (i).toString() ).remove();
+    document.getElementById("savedWord" + (i).toString()).remove();
 }
 
 function clicked(i) {
@@ -113,39 +119,62 @@ function clicked(i) {
     //console.log(currList);
     var clickWord = currList[i];
     //console.log(clickWord);
+    
+    var synomyns = notStartingSet(i);
+    console.log("synomyns", JSON.stringify(synomyns))
+    
+    
 
     currList = []
+
+    console.log("synomyns.length", synomyns.length, Object.keys(synomyns))
+    
+    var numSynomyns = Math.min(synomyns.length, 6)
+    console.log(numSynomyns, "help", synomyns.length)
+
     while (currList.length < 9) {
-        var currIndex = Math.floor(Math.random() * wordList.length);
-        var currWord = wordList[currIndex];
         if (currList.length == 4) {
             currList.push(clickWord);
-        }
-        if (!(currList.includes(currWord) || currWord == clickWord  || savedWords.includes(currWord))) {
-            currList.push(currWord);
+        } else {
+            var currIndex = 0;
+            var currWord = "";
+            if (currList.length < numSynomyns) {
+                console.log("currList.length")
+                currIndex = Math.floor(Math.random() * synomyns.length);
+                currWord = synomyns[currIndex];
+                
+            }
+            else{
+                currIndex = Math.floor(Math.random() * wordList.length);
+                currWord = wordList[currIndex];
+            }
+
+            if (!(currList.includes(currWord) || currWord == clickWord || savedWords.includes(currWord))) {
+                currList.push(currWord);
+            }
         }
     }
     console.log(currList);
-    
+
     // Generated list goes here?
 
-    for(i=0; i<9; i++){
+    for (i = 0; i < 9; i++) {
         assignWordToGrid(i);
     }
 
     return currList;
 }
 
-var request = new XMLHttpRequest()
-
-// Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'https://api.datamuse.com/words?rel_syn=sympathetic', true)
-
-request.onload = function () {
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response)
-    console.log(data)
-}
-
-// Send request
-request.send()
+//var request = new XMLHttpRequest()
+//
+//// Open a new connection, using the GET request on the URL endpoint
+//request.open('GET', 'https://api.datamuse.com/words?rel_syn=sympathetic', true)
+//
+//request.onload = function () {
+//    // Begin accessing JSON data here
+//    var data = JSON.parse(this.response)
+//    console.log(data)
+//}
+//
+//// Send request
+//request.send()
