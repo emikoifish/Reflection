@@ -1,4 +1,3 @@
 # SD-Hack-21
 chicken butt
-macaroni and the chicken strips
-chicken legs
+macaroni with the chicken strips
